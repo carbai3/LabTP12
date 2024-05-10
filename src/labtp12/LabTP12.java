@@ -5,7 +5,6 @@
  */
 package labtp12;
 
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,14 +28,20 @@ public class LabTP12 {
             String password = "";
             Connection con = DriverManager.getConnection(bd, usuario, password);
             String sql = "INSERT INTO "
-                    + "empleado( dni, apellido, nombre, acceso, estado)"
-                    + "VALUES (23567823,'Lopez','Juan',1,1),"
-                    + "(23774323,'Suarez','Mario',1,1),"
-                    + "(23534323,'Sosa','Miguel',1,1)";
+                    + "herramientas(nombre, descripcion, stock, estado)"
+                    + "VALUES ('martillo','para dar los mejores golpes',3,1),"
+                    + "('llave boca 13-14','13-14',3,1),"
+                    + "('serrucho','para serruchar el piso',6,1)";
+
+//            String sql = "INSERT INTO "
+//                    + "empleado( dni, apellido, nombre, acceso, estado)"
+//                    + "VALUES (23567823,'Lopez','Juan',1,1),"
+//                    + "(23774323,'Suarez','Mario',1,1),"
+//                    + "(23534323,'Sosa','Miguel',1,1)";
             PreparedStatement ps = con.prepareStatement(sql);
             int filas = ps.executeUpdate();
             if (filas > 0) {
-                JOptionPane.showMessageDialog(null, "Empleado Agregado");
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
             }
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Error carga Driver");
